@@ -16,7 +16,7 @@ public class PromotionDao extends AbstractHibernateDao<PromotionEntity>{
     }
 
     // find all promotions
-    public List getAllPromotions() {
+    public List<PromotionEntity> getAllPromotions() {
         return findAll();
     }
 

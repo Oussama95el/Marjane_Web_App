@@ -1,6 +1,6 @@
 <%@ page import="com.simplon.marjane.entity.CategoryEntity" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.simplon.marjane.entity.SubCategoryEntity" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: adm
   Date: 02/11/2022
@@ -9,12 +9,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%  List<CategoryEntity> categories = (List<CategoryEntity>) request.getAttribute("categories");
-    List<SubCategoryEntity> subCategories = (List<SubCategoryEntity>) request.getAttribute("subCategories");
-    // stream and filter subcategories by value of category
-    long categoryId = 0;
-    List<SubCategoryEntity> subCategoriesByCategory = subCategories.stream().filter(subCategory -> subCategory.getScCategory() == categoryId).collect(Collectors.toList());
-%>
+<%  List<CategoryEntity> categories = (List<CategoryEntity>) request.getAttribute("categories");%>
 
 <html>
 <head>
@@ -67,34 +62,34 @@
                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Category
                     <B>*</B></label>
             </div>
-            <div class="relative z-0 mb-6 w-full group">
-                <select name="sub_category" id="sub_category"
-                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">
-                    <option disabled selected>Select Sub-Category</option>
-                    <option value="test">test</option>
-                    <%--                    <c:forEach items="${categories}" var="categories">--%>
-                    <%--                    <option class="text-sm text-gray-500 font-medium" value="${category.getId()}"><c:out value="${category.getTname()}"/></option>--%>
-                    <%--                    </c:forEach>--%>
-                </select>
-                <label for="sub_category"
-                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Sub-Category</label>
-            </div>
+<%--            <div class="relative z-0 mb-6 w-full group">--%>
+<%--                <select name="sub_category" id="sub_category"--%>
+<%--                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer">--%>
+<%--                    <option disabled selected>Select Sub-Category</option>--%>
+<%--                    <option value="test">test</option>--%>
+<%--                    &lt;%&ndash;                    <c:forEach items="${categories}" var="categories">&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                    <option class="text-sm text-gray-500 font-medium" value="${category.getId()}"><c:out value="${category.getTname()}"/></option>&ndash;%&gt;--%>
+<%--                    &lt;%&ndash;                    </c:forEach>&ndash;%&gt;--%>
+<%--                </select>--%>
+<%--                <label for="sub_category"--%>
+<%--                       class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Sub-Category</label>--%>
+<%--            </div>--%>
         </div>
         <%--        dates input --%>
         <div class="grid md:grid-cols-2 md:gap-6">
             <div class="relative z-0 mb-6 w-full group">
-                <input autocomplete="off" type="date" name="start_date" id="floating_start_date"
+                <input autocomplete="off" type="date" name="startDate" id="floating_startDate"
                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                        placeholder=" " required="">
-                <label for="floating_start_date"
+                <label for="floating_startDate"
                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Start
                     Date</label>
             </div>
             <div class="relative z-0 mb-6 w-full group">
-                <input autocomplete="off" type="date" name="expiration_date" id="floating_expiration_date"
+                <input autocomplete="off" type="date" name="expireDate" id="floating_expireDate"
                        class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                        placeholder=" " required="">
-                <label for="floating_expiration_date"
+                <label for="floating_expireDate"
                        class="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Expiration
                     Date</label>
             </div>

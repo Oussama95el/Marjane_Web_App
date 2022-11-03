@@ -12,9 +12,7 @@ import java.io.IOException;
 public class CategoryServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-     CategoryDao categoryDao = new CategoryDao();
-        SubCategoryDao subCategoryDao = new SubCategoryDao();
-        request.setAttribute("subcategories", subCategoryDao.getAllSubCategories());
+        CategoryDao categoryDao = new CategoryDao();
         request.setAttribute("categories", categoryDao.getAllCategories());
         // redirect to the category page
         RequestDispatcher dispatcher = request.getRequestDispatcher("/views/Manager/CreatPromo.jsp");

@@ -19,7 +19,7 @@
             transition duration-500 ease-in-out overflow-y-auto">
     <nav class="flex items-center justify-evenly bg-white text-center">
       <div class="w-full">
-        <a href="#" class="px-5 py-2.5 w-full relative group overflow-hidden font-medium bg-white text-blue inline-block">
+        <a href="/PromoServlet" class="px-5 py-2.5 w-full relative group overflow-hidden font-medium bg-white text-blue inline-block">
           <span class="absolute top-0 left-0 flex w-full h-0 mb-0 transition-all duration-200 ease-out transform translate-y-0 bg-blue-600 group-hover:h-full opacity-90"></span>
           <span class="relative group-hover:text-black">Promotion List</span>
         </a>

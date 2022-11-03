@@ -26,7 +26,7 @@ public class PromotionEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "p_sub_category", nullable = false)
+    @JoinColumn(name = "p_sub_category", nullable = true)
     @Nullable
     private SubCategoryEntity pSubCategory;
 
@@ -138,7 +138,6 @@ public class PromotionEntity implements Serializable {
         return
                 "\n--------------------------- PromotionEntity  " + id +" -------------------------"+
                 "\n Category = " + pCategory.getcName() +
-                "\n SubCategory = " + pSubCategory.getScName() +
                 "\n StartDate = " + pStartDate +
                 "\n ExpireDate = " + pExpireDate +
                 "\n Rate = " + pRate +"%"+

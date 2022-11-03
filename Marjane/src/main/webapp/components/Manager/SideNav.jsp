@@ -41,7 +41,7 @@
         <li
                 class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
 				rounded-lg">
-            <a href="../../views/Manager/promotion.jsp" class=" flex flex-col items-center" id="promotionManager">
+            <a href="/PromoServlet" class=" flex flex-col items-center" id="promotionManager">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" class="fill-current h-5 w-5">
                     <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                     <path d="M374.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-320 320c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l320-320zM128 128c0-35.3-28.7-64-64-64S0 92.7 0 128s28.7 64 64 64s64-28.7 64-64zM384 384c0-35.3-28.7-64-64-64s-64 28.7-64 64s28.7 64 64 64s64-28.7 64-64z">

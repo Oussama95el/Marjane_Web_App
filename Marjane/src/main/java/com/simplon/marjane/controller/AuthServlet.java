@@ -11,6 +11,7 @@ import java.io.IOException;
 
 @WebServlet(name = "AuthServlet", value = "/auth")
 public class AuthServlet extends HttpServlet {
+    Integer id;
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

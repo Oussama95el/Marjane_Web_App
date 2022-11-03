@@ -18,14 +18,6 @@ public class main {
     private static int choice;
     public static void main(String[] args) {
             // create new super admin
-            SuperAdminDao superAdminDao = new SuperAdminDao();
-            SuperAdminEntity superAdmin = new SuperAdminEntity();
-            superAdmin.setSaName("Super Admin");
-            superAdmin.setSaEmail("sa@admin.com");
-            superAdmin.setSaPassword(Security.hashPassword("123456"));
-            superAdminDao.create(superAdmin);
-
-
             choice = Menus.mainMenu();
             if (choice == 1) {
                 choice = Menus.loginMenu();

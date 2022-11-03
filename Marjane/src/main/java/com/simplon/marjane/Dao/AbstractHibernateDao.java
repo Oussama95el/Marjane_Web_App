@@ -27,7 +27,7 @@ public abstract class AbstractHibernateDao<T extends Serializable> {
             });
         }
 
-        public List findAll() {
+        public List<T> findAll() {
                 return jpaService.runInTransaction(entityManager -> {
                     return entityManager.createQuery("from " + clazz.getName()).getResultList();
                 });
