@@ -1,7 +1,6 @@
 package com.simplon.marjane.utils;
 
 import com.simplon.marjane.Dao.CategoryDao;
-import com.simplon.marjane.Dao.SubCategoryDao;
 import com.simplon.marjane.entity.*;
 
 import java.math.BigDecimal;
@@ -135,18 +134,6 @@ public class Menus {
         String answer = MainUtils.scan().nextLine();
         // if yes
         assert Objects.equals(answer, "y") || Objects.equals(answer, "n");
-        if (answer.equals("y")) {
-            MainUtils.println("Enter the promotion subCategory: ");
-            for (SubCategoryEntity subCategory : category.getSubCategories()) {
-                MainUtils.println(subCategory.getScId() + ". " + subCategory.getScName());
-            }
-            long scId = MainUtils.scan().nextLong();
-            SubCategoryEntity subCategory = new SubCategoryDao().getSubCategoryById(scId);
-            assert subCategory != null;
-            promotion.setPSubCategory(subCategory);
-        }else {
-            promotion.setPSubCategory(null);
-        }
         // set Localdate to promotion
         MainUtils.println("Enter the promotion start date: ");
         // enter year
@@ -225,16 +212,6 @@ public class Menus {
         });
         MainUtils.println("Enter Category id: ");
         int cId = MainUtils.scan().nextInt();
-//        List<SubCategoryEntity> subCategories = new CategoryDao().getAllSubCategoriesByCategoryId(cId);
-//        assert subCategories != null;
-//        //stream to print all subCategories and get the subCategory id
-//        MainUtils.println("Enter Responsible Rayon SubCategory: ");
-//        subCategories.forEach(subCategory -> {
-//            MainUtils.println("SubCategory id: " + subCategory.getScId() + " SubCategory name: " + subCategory.getScName());
-//        });
-//        MainUtils.println("Enter SubCategory id: ");
-
-
 
         return new RespRayonEntity(name, email, password,cId);
     }

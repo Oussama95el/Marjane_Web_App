@@ -23,6 +23,17 @@ public class AdminEntity implements Serializable {
     @Column(name = "a_password")
     private String aPassword;
 
+    @OneToOne(mappedBy = "bAdmin")
+    private BranchEntity branches;
+
+    public BranchEntity getBranches() {
+        return branches;
+    }
+
+    public void setBranches(BranchEntity branches) {
+        this.branches = branches;
+    }
+
     public long getaId() {
         return aId;
     }

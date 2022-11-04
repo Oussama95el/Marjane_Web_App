@@ -9,7 +9,6 @@
         <class>com.simplon.marjane.entity.CityEntity</class>
         <class>com.simplon.marjane.entity.PromotionEntity</class>
         <class>com.simplon.marjane.entity.RespRayonEntity</class>
-        <class>com.simplon.marjane.entity.SubCategoryEntity</class>
         <class>com.simplon.marjane.entity.SuperAdminEntity</class>
         <class>com.simplon.marjane.entity.AdminEntity</class>
         <class>com.simplon.marjane.entity.BranchEntity</class>
@@ -17,7 +16,6 @@
         <class>com.simplon.marjane.entity.CityEntity</class>
         <class>com.simplon.marjane.entity.PromotionEntity</class>
         <class>com.simplon.marjane.entity.RespRayonEntity</class>
-        <class>com.simplon.marjane.entity.SubCategoryEntity</class>
         <class>com.simplon.marjane.entity.SuperAdminEntity</class>
         <properties>
             <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/marjane"/>

@@ -1,7 +1,6 @@
-package com.simplon.marjane.controller;
+package com.simplon.marjane.controller.Manager;
 
 import com.simplon.marjane.Dao.CategoryDao;
-import com.simplon.marjane.Dao.SubCategoryDao;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;

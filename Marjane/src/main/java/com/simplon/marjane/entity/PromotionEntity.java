@@ -1,6 +1,5 @@
 package com.simplon.marjane.entity;
 
-import com.sun.istack.Nullable;
 import jakarta.persistence.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -23,12 +22,6 @@ public class PromotionEntity implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "p_category", nullable = false)
     private CategoryEntity pCategory;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "p_sub_category", nullable = true)
-    @Nullable
-    private SubCategoryEntity pSubCategory;
 
     @Column(name = "p_start_date", nullable = false)
     private LocalDate pStartDate;
@@ -72,14 +65,6 @@ public class PromotionEntity implements Serializable {
         this.pCategory = pCategory;
     }
 
-    public SubCategoryEntity getPSubCategory() {
-        return pSubCategory;
-    }
-
-    public void setPSubCategory(SubCategoryEntity pSubCategory) {
-        this.pSubCategory = pSubCategory;
-    }
-
     public LocalDate getPStartDate() {
         return pStartDate;
     }
@@ -121,9 +106,8 @@ public class PromotionEntity implements Serializable {
     }
 
 
-    public PromotionEntity(CategoryEntity pCategory, SubCategoryEntity pSubCategory, LocalDate pStartDate, LocalDate pExpireDate, BigDecimal pRate, Integer pPointFidelite) {
+    public PromotionEntity(CategoryEntity pCategory, LocalDate pStartDate, LocalDate pExpireDate, BigDecimal pRate, Integer pPointFidelite) {
         this.pCategory = pCategory;
-        this.pSubCategory = pSubCategory;
         this.pStartDate = pStartDate;
         this.pExpireDate = pExpireDate;
         this.pRate = pRate;
@@ -133,15 +117,15 @@ public class PromotionEntity implements Serializable {
     }
 
     // toString
-    @Override
-    public String toString() {
-        return
-                "\n--------------------------- PromotionEntity  " + id +" -------------------------"+
-                "\n Category = " + pCategory.getcName() +
-                "\n StartDate = " + pStartDate +
-                "\n ExpireDate = " + pExpireDate +
-                "\n Rate = " + pRate +"%"+
-                "\n Point Fidelite =" + pPointFidelite + " points"+
-                "\n Status = " + pStatus;
-    }
+//    @Override
+//    public String toString() {
+//        return
+//                "\n--------------------------- PromotionEntity  " + id +" -------------------------"+
+//                "\n Category = " + pCategory.getcName() +
+//                "\n StartDate = " + pStartDate +
+//                "\n ExpireDate = " + pExpireDate +
+//                "\n Rate = " + pRate +"%"+
+//                "\n Point Fidelite =" + pPointFidelite + " points"+
+//                "\n Status = " + pStatus;
+//    }
 }

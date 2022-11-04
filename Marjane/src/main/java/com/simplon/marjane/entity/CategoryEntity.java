@@ -23,16 +23,8 @@ public class CategoryEntity implements Serializable {
     @OneToMany(mappedBy = "pCategory")
     private Set<PromotionEntity> promotions = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "scCategory")
-    private Set<SubCategoryEntity> subCategories = new LinkedHashSet<>();
 
-    public Set<SubCategoryEntity> getSubCategories() {
-        return subCategories;
-    }
 
-    public void setSubCategories(Set<SubCategoryEntity> subCategories) {
-        this.subCategories = subCategories;
-    }
 
     public Set<PromotionEntity> getPromotions() {
         return promotions;
