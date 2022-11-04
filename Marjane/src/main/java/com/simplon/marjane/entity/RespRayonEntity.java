@@ -1,6 +1,8 @@
 package com.simplon.marjane.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.io.Serializable;
 import java.util.LinkedHashSet;
@@ -33,9 +35,10 @@ public class RespRayonEntity implements Serializable {
     @Basic
     @Column(name = "rr_password")
     private String rrPassword;
-    @Basic
-    @Column(name = "rr_rayon")
-    private long rrRayon;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @JoinColumn(name = "rr_rayon", nullable = false)
+    private CategoryEntity rrRayon;
 
     @OneToMany(mappedBy = "cUser")
     private Set<CommentEntity> comments = new LinkedHashSet<>();
@@ -80,16 +83,16 @@ public class RespRayonEntity implements Serializable {
         this.rrPassword = rrPassword;
     }
 
-    public long getRrRayon() {
+    public CategoryEntity getRrRayon() {
         return rrRayon;
     }
 
-    public void setRrRayon(long rrRayon) {
+    public void setRrRayon(CategoryEntity rrRayon) {
         this.rrRayon = rrRayon;
     }
 
     //Constructor with parameters
-    public RespRayonEntity( String rrName, String rrEmail, String rrPassword, long rrRayon) {
+    public RespRayonEntity( String rrName, String rrEmail, String rrPassword, CategoryEntity rrRayon) {
         this.rrName = rrName;
         this.rrEmail = rrEmail;
         this.rrPassword = rrPassword;
@@ -123,7 +126,7 @@ public class RespRayonEntity implements Serializable {
         result = 31 * result + (rrName != null ? rrName.hashCode() : 0);
         result = 31 * result + (rrEmail != null ? rrEmail.hashCode() : 0);
         result = 31 * result + (rrPassword != null ? rrPassword.hashCode() : 0);
-        result = 31 * result + (int) (rrRayon ^ (rrRayon >>> 32));
+        result = 31 * result + (rrRayon != null ? rrRayon.hashCode() : 0);
         return result;
     }
 }

@@ -1,5 +1,7 @@
 <%@ page import="com.simplon.marjane.entity.CategoryEntity" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.util.Comparator" %>
+<%@ page import="java.util.stream.Collectors" %>
 <%--
   Created by IntelliJ IDEA.
   User: adm
@@ -9,7 +11,10 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%  List<CategoryEntity> categories = (List<CategoryEntity>) request.getAttribute("categories");%>
+<%  List<CategoryEntity> categories = (List<CategoryEntity>) request.getAttribute("categories");
+
+    categories = categories.stream().sorted(Comparator.comparing(CategoryEntity::getcId).reversed()).collect(Collectors.toList());
+%>
 
 <html>
 <head>
@@ -22,7 +27,7 @@
         <h2 class="text-grey font-bold text-lg mb-3">Promotion Form</h2>
         <input type="hidden" autocomplete="false"/>
         <div class="relative z-0 mb-6 w-full group">
-            <input autocomplete="off" type="number" name="rate" id="rate"
+            <input autocomplete="off" type="number" name="rate" id="rate" max="50" min="1"
                    class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                    placeholder=" " required="">
             <label for="rate"
@@ -86,7 +91,7 @@
     const category = document.getElementById('category');
     const rate = document.getElementById('rate');
     category.addEventListener('change', () => {
-        if (category.value === '2') {
+        if (category.value === '1') {
             rate.setAttribute('max', '20');
         } else {
             rate.setAttribute('max', '50');

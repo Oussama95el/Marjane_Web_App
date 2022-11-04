@@ -4,6 +4,7 @@ import com.simplon.marjane.Dao.CategoryDao;
 import com.simplon.marjane.Dao.RespRayonDao;
 import com.simplon.marjane.entity.CategoryEntity;
 import com.simplon.marjane.entity.RespRayonEntity;
+import com.simplon.marjane.utils.SimpleEmail;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -26,18 +27,31 @@ public class RespRayonServlet extends HttpServlet {
         RespRayonDao respRayonDao = new RespRayonDao();
         // get the resp rayon properties
         long category = Long.parseLong(request.getParameter("category"));
+        CategoryDao categoryDao = new CategoryDao();
         assert category != 0;
+        CategoryEntity categoryEntity = categoryDao.getCategoryById(category);
+        String rrName = request.getParameter("name");
+        String rrEmail = request.getParameter("email");
+        String rrPassword = request.getParameter("password");
         // set all the resp rayon properties
-        respRayon.setRrRayon(category);
-        respRayon.setRrName(request.getParameter("name"));
-        respRayon.setRrEmail(request.getParameter("email"));
-        respRayon.setRrPassword(request.getParameter("password"));
+        respRayon.setRrRayon(categoryEntity);
+        respRayon.setRrName(rrName);
+        respRayon.setRrEmail(rrEmail);
+        respRayon.setRrPassword(rrPassword);
 
         if (respRayonDao.createRespRayon(respRayon)) {
+            //Send email to the resp rayon using class SimpleEmail
+            request.setAttribute("message", "Resp rayon created with success");
+            request.setAttribute("type", "success");
+            SimpleEmail.sendSimpleEmail(rrEmail,
+                    "Welcome to Marjane",
+                    "Welcome to Marjane, your account has been created successfully"
+            );
             // redirect to the resp rayon page
-            request.getRequestDispatcher("/views/Manager/respRayon.jsp").forward(request, response);
+            request.getRequestDispatcher("/DashboardServlet").forward(request, response);
         } else {
             // redirect to the 404 page
+            request.setAttribute("type", "error");
             request.getRequestDispatcher("/views/components/404.jsp").forward(request, response);
         }
 

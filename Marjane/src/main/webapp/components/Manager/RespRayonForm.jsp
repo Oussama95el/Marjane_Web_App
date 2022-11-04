@@ -34,11 +34,11 @@
         </nav>
 
         <div class="w-full py-4 px-8 rounded bg-white">
-            <form method="post" action="/RespRayonServlet">
+            <form method="post" action="/RespRayon/create">
                 <h2 class="text-grey font-bold text-lg mb-3">Promotion Form</h2>
                 <input type="hidden" autocomplete="false"/>
                 <div class="relative z-0 mb-6 w-full group">
-                    <input autocomplete="off" type="password" name="name" id="full_name"
+                    <input autocomplete="off" type="text" name="name" id="full_name"
                            class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                            placeholder=" " required="">
                     <label for="full_name"

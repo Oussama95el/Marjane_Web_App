@@ -97,17 +97,17 @@ public class MainUtils {
                 switch (choice) {
                     case 1:
                         // Create Responsable Rayon
-                        RespRayonDao respRayonDao = new RespRayonDao();
-                         RespRayonEntity newRespRayon = Menus.createResponsibleRayon();
-                         String password = newRespRayon.getRrPassword();
-                         if (respRayonDao.createRespRayon(newRespRayon)) {
-                             println("Responsable Rayon created successfully");
-                             // send email with login and password information
-                             SimpleEmail.sendSimpleEmail("oussamaelbechari@gmail.com", "Welcome to Marjane",
-                                     "Your email is : <B> " + newRespRayon.getRrEmail() + "</B> and your password is: <B>" + password +"</B>");
-                         } else {
-                             println("Responsable Rayon creation failed");
-                         }
+//                        RespRayonDao respRayonDao = new RespRayonDao();
+//                         RespRayonEntity newRespRayon = Menus.createResponsibleRayon();
+//                         String password = newRespRayon.getRrPassword();
+//                         if (respRayonDao.createRespRayon(newRespRayon)) {
+//                             println("Responsable Rayon created successfully");
+//                             // send email with login and password information
+//                             SimpleEmail.sendSimpleEmail("oussamaelbechari@gmail.com", "Welcome to Marjane",
+//                                     "Your email is : <B> " + newRespRayon.getRrEmail() + "</B> and your password is: <B>" + password +"</B>");
+//                         } else {
+//                             println("Responsable Rayon creation failed");
+//                         }
                         break;
                     case 2:
                         // Promotion menu

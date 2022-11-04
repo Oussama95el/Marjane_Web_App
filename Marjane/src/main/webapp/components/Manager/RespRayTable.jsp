@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.simplon.marjane.entity.RespRayonEntity" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: adm
   Date: 04/11/2022
@@ -6,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%  List<RespRayonEntity> respRayons = (List<RespRayonEntity>) request.getAttribute("respRayons");%>
+
 <html>
 <head>
     <title>Title</title>
@@ -64,7 +68,7 @@
             <c:out value="${respRay.getRrEmail()}"/>
           </td>
           <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-            <c:out value="${respRay.getRrCategory}"/>
+            <c:out value="${respRay.getRrRayon().getcName()}"/>
           </td>
         </tr>
       </c:forEach>

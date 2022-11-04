@@ -30,7 +30,6 @@
                 </a>
             </div>
         </nav>
-
         <jsp:include page="../../components/Manager/RespRayTable.jsp" flush="true"/>
     </main>
 </div>

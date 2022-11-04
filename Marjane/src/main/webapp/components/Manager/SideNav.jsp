@@ -26,7 +26,7 @@
         <!-- Links -->
 
         <li class="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300 rounded-lg">
-            <a href="../../views/Manager/dashboard.jsp" class=" flex flex-col items-center">
+            <a href="/DashboardServlet" class=" flex flex-col items-center">
                 <svg class="fill-current h-5 w-5" viewBox="0 0 24 24">
                     <path
                             d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9
@@ -52,7 +52,7 @@
 
         <li
                 class="mt-3 p-2 hover:text-blue-600 rounded-lg">
-            <a href="/resp-rayon" class=" flex flex-col items-center" id="respRayManager">
+            <a href="/RespRayonListServlet" class=" flex flex-col items-center" id="respRayManager">
                 <svg class="fill-current h-5 w-5" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                         <path d="M192 0c-41.8 0-77.4 26.7-90.5 64H64C28.7 64 0 92.7 0 128V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7
                                  64-64V128c0-35.3-28.7-64-64-64H282.5C269.4 26.7 233.8 0 192 0zm0 128c-17.7 0-32-14.3-32-32s14.3-32 32-32s32

@@ -195,26 +195,26 @@ public class Menus {
         return new AdminEntity(name, email, password) ;
     }
     // Create Responsible Rayon
-    public static RespRayonEntity createResponsibleRayon() {
-        List<CategoryEntity> categories = new CategoryDao().getAllCategories();
-
-        MainUtils.println("------------------- Create Responsible Rayon -------------------");
-        MainUtils.println("Enter Responsible Rayon Name: ");
-        String name = MainUtils.scan().nextLine();
-        MainUtils.println("Enter Responsible Rayon Email: ");
-        String email = MainUtils.scan().nextLine();
-        MainUtils.println("Enter Responsible Rayon Password: ");
-        String password = MainUtils.scan().nextLine();
-        //stream to print all categories and get the category id
-        MainUtils.println("Enter Responsible Rayon Category: ");
-        categories.forEach(category -> {
-            MainUtils.println("Category id: " + category.getcId() + " Category name: " + category.getcName());
-        });
-        MainUtils.println("Enter Category id: ");
-        int cId = MainUtils.scan().nextInt();
-
-        return new RespRayonEntity(name, email, password,cId);
-    }
+//    public static RespRayonEntity createResponsibleRayon() {
+//        List<CategoryEntity> categories = new CategoryDao().getAllCategories();
+//
+//        MainUtils.println("------------------- Create Responsible Rayon -------------------");
+//        MainUtils.println("Enter Responsible Rayon Name: ");
+//        String name = MainUtils.scan().nextLine();
+//        MainUtils.println("Enter Responsible Rayon Email: ");
+//        String email = MainUtils.scan().nextLine();
+//        MainUtils.println("Enter Responsible Rayon Password: ");
+//        String password = MainUtils.scan().nextLine();
+//        //stream to print all categories and get the category id
+//        MainUtils.println("Enter Responsible Rayon Category: ");
+//        categories.forEach(category -> {
+//            MainUtils.println("Category id: " + category.getcId() + " Category name: " + category.getcName());
+//        });
+//        MainUtils.println("Enter Category id: ");
+//        int cId = MainUtils.scan().nextInt();
+//
+//        return new RespRayonEntity(name, email, password,);
+//    }
 
     // function LocalDate that take parameter int year, int month, int day
     public static LocalDate setLocalDate(int year, int month, int day) {
