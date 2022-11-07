@@ -71,7 +71,7 @@
             class="flex justify-center items-center p-2 text-blue-700 hover:bg-purple-200 rounded-full">
         <!-- important action -->
 
-        <a href="/" class="flex flex-col items-center">
+        <a href="/SessionServlet" class="flex flex-col items-center">
             <svg class="fill-current h-5 w-5" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
                 <path d="M160 96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96C43 32 0 75 0 128V384c0 53 43 96 96
                     96h64c17.7 0 32-14.3 32-32s-14.3-32-32-32H96c-17.7 0-32-14.3-32-32l0-256c0-17.7 14.3-32 32-32h64zM504.5 273.4c4.8-4.5 7.5-10.8 7.5-17.4s-2.7-12.9-7.5-17.4l-144-136c-7-6.6-17.2-8.4-26-4.6s-14.5 12.5-14.5

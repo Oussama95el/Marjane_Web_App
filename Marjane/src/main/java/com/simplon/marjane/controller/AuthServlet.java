@@ -33,7 +33,7 @@ public class AuthServlet extends HttpServlet {
                 //check if the user is in the database
                 if (superAdminDao.validateSuperAdminLogin(fields)) {
                     //redirect to the admin page
-                    response.sendRedirect("/views/SuperAdmin/DashboardSa.jsp");
+                    response.sendRedirect("/DashboardServlet");
                     //request session to get superAdmin object
                     HttpSession session = request.getSession();
                     session.setAttribute("superAdmin", superAdminDao.getSuperAdminByEmail(email));
@@ -46,7 +46,7 @@ public class AuthServlet extends HttpServlet {
                 //check if the user is in the database
                 if (adminDao.validateAdminLogin(fields)) {
                     //redirect to the member page
-                    response.sendRedirect("/views/Manager/dashboard.jsp");
+                    response.sendRedirect("/DashboardServlet");
                     HttpSession session = request.getSession();
                     session.setAttribute("manager", adminDao.getAdminByEmail(email));
                 }else {

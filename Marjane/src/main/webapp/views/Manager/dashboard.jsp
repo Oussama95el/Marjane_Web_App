@@ -50,7 +50,7 @@
                                                                 Category
                                                             </th>
                                                             <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                                                Rate
+                                                                Rate %
                                                             </th>
                                                             <th scope="col" class="p-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                                                 Fidelity Points
