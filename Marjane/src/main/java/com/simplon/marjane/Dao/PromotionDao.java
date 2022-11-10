@@ -26,11 +26,19 @@ public class PromotionDao extends AbstractHibernateDao<PromotionEntity>{
     }
 
     // find one promotion by category
-    public PromotionEntity getPromotionByCategory(int category) {
+    public PromotionEntity getPromotionByCategory(double category) {
         return jpaService.runInTransaction(entityManager -> {
             return entityManager.createQuery("select p from PromotionEntity p WHERE p.pCategory = :category", PromotionEntity.class)
                     .setParameter("category", category)
                     .getSingleResult();
+        });
+    }
+    // get all promotions by category
+    public List<PromotionEntity> getAllPromotionsByCategory(double category) {
+        return jpaService.runInTransaction(entityManager -> {
+            return entityManager.createQuery("select p from PromotionEntity p WHERE p.pCategory = :category", PromotionEntity.class)
+                    .setParameter("category", category)
+                    .getResultList();
         });
     }
     // create promotion
@@ -72,5 +80,11 @@ public class PromotionDao extends AbstractHibernateDao<PromotionEntity>{
                 });
             }
         });
+    }
+
+
+    public static void main(String[] args) {
+        PromotionDao promotionDao = new PromotionDao();
+
     }
 }
