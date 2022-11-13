@@ -192,7 +192,7 @@ public class Menus {
         String email = MainUtils.scan().nextLine();
         MainUtils.println("Enter Manager Password: ");
         String password = MainUtils.scan().nextLine();
-        return new AdminEntity(name, email, password) ;
+        return new AdminEntity() ;
     }
     // Create Responsible Rayon
 //    public static RespRayonEntity createResponsibleRayon() {

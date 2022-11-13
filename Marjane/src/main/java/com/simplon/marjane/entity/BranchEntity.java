@@ -2,16 +2,18 @@ package com.simplon.marjane.entity;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "branch", schema = "public", catalog = "marjane")
-public class BranchEntity {
+public class BranchEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "b_id")
     private long bId;
-    @Basic
-    @Column(name = "b_city")
-    private long bCity;
+    @ManyToOne
+    @JoinColumn(name = "b_city")
+    private CityEntity bCity;
     @Basic
     @Column(name = "b_adress")
     private String bAdress;
@@ -28,11 +30,11 @@ public class BranchEntity {
         this.bId = bId;
     }
 
-    public long getbCity() {
+    public CityEntity getbCity() {
         return bCity;
     }
 
-    public void setbCity(long bCity) {
+    public void setbCity(CityEntity bCity) {
         this.bCity = bCity;
     }
 
@@ -70,7 +72,7 @@ public class BranchEntity {
     @Override
     public int hashCode() {
         int result = (int) (bId ^ (bId >>> 32));
-        result = 31 * result + (int) (bCity ^ (bCity >>> 32));
+        result = 31 * result + (bCity != null ? bCity.hashCode() : 0);
         result = 31 * result + (bAdress != null ? bAdress.hashCode() : 0);
         result = 31 * result + (bAdmin != null ? bAdmin.hashCode() : 0);
         return result;

@@ -40,6 +40,13 @@ public class AdminDao extends AbstractHibernateDao<AdminEntity> {
             }
         });
     }
+    // get all admins
+    public List getAllAdminsList() {
+        return jpaService.runInTransaction(entityManager -> {
+            return entityManager.createQuery("select a from AdminEntity a", AdminEntity.class)
+                    .getResultList();
+        });
+    }
 
     // find one admin by email and password
     public boolean validateAdminLogin(Object[] login){

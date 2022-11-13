@@ -37,7 +37,7 @@ public class AuthServlet extends HttpServlet {
                     PromotionDao promotionDao = new PromotionDao();
                     promotionDao.updatePromotionStatusBasedOnDate();
                     //redirect to the admin page
-                    response.sendRedirect("/DashboardServlet");
+                    response.sendRedirect("/super-admin/dashboard");
                     //request session to get superAdmin object
                     HttpSession session = request.getSession();
                     session.setAttribute("superAdmin", superAdminDao.getSuperAdminByEmail(email));
