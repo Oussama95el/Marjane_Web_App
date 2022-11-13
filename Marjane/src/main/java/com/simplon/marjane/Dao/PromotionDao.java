@@ -1,6 +1,10 @@
 package com.simplon.marjane.Dao;
 
+import com.simplon.marjane.entity.CategoryEntity;
+import com.simplon.marjane.entity.CommentEntity;
 import com.simplon.marjane.entity.PromotionEntity;
+import com.simplon.marjane.entity.RespRayonEntity;
+import com.simplon.marjane.utils.MainUtils;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -26,15 +30,7 @@ public class PromotionDao extends AbstractHibernateDao<PromotionEntity>{
     }
 
     // find one promotion by category
-    public PromotionEntity getPromotionByCategory(double category) {
-        return jpaService.runInTransaction(entityManager -> {
-            return entityManager.createQuery("select p from PromotionEntity p WHERE p.pCategory = :category", PromotionEntity.class)
-                    .setParameter("category", category)
-                    .getSingleResult();
-        });
-    }
-    // get all promotions by category
-    public List<PromotionEntity> getAllPromotionsByCategory(double category) {
+    public List<PromotionEntity> getAllPromotionByCategory(CategoryEntity category) {
         return jpaService.runInTransaction(entityManager -> {
             return entityManager.createQuery("select p from PromotionEntity p WHERE p.pCategory = :category", PromotionEntity.class)
                     .setParameter("category", category)
@@ -50,7 +46,7 @@ public class PromotionDao extends AbstractHibernateDao<PromotionEntity>{
     // if current Time is between 8 and 12 update promotion status is possible
     public boolean updatePromotionStatusBasedOnTime(PromotionEntity promotion, String status) {
         LocalTime currentTime = LocalTime.now();
-        if (currentTime.isAfter(LocalTime.of(8, 0)) && currentTime.isBefore(LocalTime.of(18, 30))) {
+        if (currentTime.isAfter(LocalTime.of(8, 0)) && currentTime.isBefore(LocalTime.of(18, 0))) {
             // create update query where promotion category is equal to promotion category
             return jpaService.runInTransaction(entityManager -> {
                 entityManager.createQuery("update PromotionEntity p set p.pStatus = :status where p.pCategory = :category AND p.id = :id")
@@ -64,7 +60,17 @@ public class PromotionDao extends AbstractHibernateDao<PromotionEntity>{
             return false;
         }
     }
-
+    // update all promotions status based on expiration date and current date
+    public boolean updatePromotionStatusBasedOnDate() {
+        // get all promotions
+        List<PromotionEntity> promotions = getAllPromotions();
+        // stream promotions and get the promotion with expiration date less than current date and status is PENDING
+        promotions.stream().filter(p -> p.getPExpireDate().isBefore(LocalDate.now()) && p.getPStatus().equals("PENDING")).forEach(p -> {
+            // update promotion status to EXPIRED
+            updatePromotionStatusBasedOnTime(p, "EXPIRED");
+        });
+        return true;
+    }
 
     // function to update automatically promotion status based on expiration date if status is pending change to expired
     public void updatePromotionStatusBasedOnExpirationDate() {
@@ -82,9 +88,16 @@ public class PromotionDao extends AbstractHibernateDao<PromotionEntity>{
         });
     }
 
-
-    public static void main(String[] args) {
-        PromotionDao promotionDao = new PromotionDao();
-
+    // update comment by promotion id
+    public boolean updatePromotionComment(PromotionEntity promotion, CommentEntity comment) {
+        return jpaService.runInTransaction(entityManager -> {
+            entityManager.createQuery("update PromotionEntity p set p.comments = :comment where p.id = :id")
+                    .setParameter("comment", comment)
+                    .setParameter("id", promotion.getId())
+                    .executeUpdate();
+            return true;
+        });
     }
+
+
 }

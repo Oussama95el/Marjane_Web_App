@@ -19,9 +19,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <h1>
-      Responsable Rayon Dashboard
-    </h1>
+
     <div class="h-screen w-full flex overflow-hidden select-none">
         <jsp:include page="../../components/RespRayon/SideNav.jsp" flush="true"/>
         <main class="my-1 pt-2 pb-2 px-10 flex-1 bg-gray-200 dark:bg-black rounded-l-lg

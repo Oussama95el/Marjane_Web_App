@@ -41,14 +41,12 @@ public class RespRayonServlet extends HttpServlet {
 
         if (respRayonDao.createRespRayon(respRayon)) {
             //Send email to the resp rayon using class SimpleEmail
-            request.setAttribute("message", "Resp rayon created with success");
-            request.setAttribute("type", "success");
-            SimpleEmail.sendSimpleEmail(rrEmail,
+            SimpleEmail.sendSimpleEmail("oussamaelbechari@gmail.com",
                     "Welcome to Marjane",
                     "Welcome to Marjane, your account has been created successfully"
             );
             // redirect to the resp rayon page
-            request.getRequestDispatcher("/DashboardServlet").forward(request, response);
+            request.getRequestDispatcher("/RespRayonListServlet").forward(request, response);
         } else {
             // redirect to the 404 page
             request.setAttribute("type", "error");

@@ -35,7 +35,7 @@ public class AuthServlet extends HttpServlet {
                 if (superAdminDao.validateSuperAdminLogin(fields)) {
                     // update promotion status
                     PromotionDao promotionDao = new PromotionDao();
-                    promotionDao.updatePromotionStatusBasedOnExpirationDate();
+                    promotionDao.updatePromotionStatusBasedOnDate();
                     //redirect to the admin page
                     response.sendRedirect("/DashboardServlet");
                     //request session to get superAdmin object
@@ -50,7 +50,7 @@ public class AuthServlet extends HttpServlet {
                 //check if the user is in the database
                 if (adminDao.validateAdminLogin(fields)) {
                     PromotionDao promotionDao = new PromotionDao();
-                    promotionDao.updatePromotionStatusBasedOnExpirationDate();
+                    promotionDao.updatePromotionStatusBasedOnDate();
                     //redirect to the member page
                     response.sendRedirect("/DashboardServlet");
                     HttpSession session = request.getSession();
@@ -65,7 +65,7 @@ public class AuthServlet extends HttpServlet {
                 //check if the user is in the database
                 if (respRayonDao.validateRespRayonLogin(fields)) {
                     PromotionDao promotionDao = new PromotionDao();
-                    promotionDao.updatePromotionStatusBasedOnExpirationDate();
+                    promotionDao.updatePromotionStatusBasedOnDate();
                     //redirect to the RR page
                     response.sendRedirect("/resp-ray/dashboard");
                     HttpSession session = request.getSession();
