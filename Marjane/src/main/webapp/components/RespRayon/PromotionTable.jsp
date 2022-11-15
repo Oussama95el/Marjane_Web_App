@@ -23,13 +23,6 @@
             <div class="relative w-full px-4 max-w-full flex-grow flex-1">
                 <h3 class="font-semibold text-sm text-blue">Promotions Table</h3>
             </div>
-<%--            <div--%>
-<%--                    class="relative w-full pt-1 px-4 max-w-full flex-grow flex-1 flex gap-[1rem] justify-end"--%>
-<%--            >--%>
-<%--                <a href="/CategoryServlet" class="bg-blue-600 px-3 py-4 text-white font-extrabold rouded text-sm">--%>
-<%--                    Add Promotion--%>
-<%--                </a>--%>
-<%--            </div>--%>
         </div>
     </div>
     <div class="block w-full overflow-x-auto bg-white">
@@ -122,6 +115,9 @@
             </c:forEach>
             </tbody>
         </table>
+        <div class="w-full flex items-center justify-center mb-3">
+            <jsp:include page="Pagination.jsp" flush="true"/>
+        </div>
     </div>
 </div>
 <script>

@@ -99,5 +99,10 @@ public class PromotionDao extends AbstractHibernateDao<PromotionEntity>{
         });
     }
 
+    public static void main(String[] args) {
+        PromotionDao promotionDao = new PromotionDao();
+        CommentEntity comment = new CommentDao().getCommentById(1);
 
+        promotionDao.updatePromotionComment(promotionDao.getPromotionById(10), comment);
+    }
 }

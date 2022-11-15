@@ -11,16 +11,52 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
-import java.util.Locale;
 
-@WebServlet(name = "PromoServlet", value = "/PromoServlet")
+
+@WebServlet(name = "PromoServlet", value = "/PromoServlet/*")
 public class PromoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PromotionDao promotionDao = new PromotionDao();
-        List<PromotionEntity> promotionEntity =  promotionDao.getAllPromotions();
-        request.setAttribute("promotions", promotionEntity);
+        List<PromotionEntity> promotions =  promotionDao.getAllPromotions().stream().sorted(Comparator.comparing(PromotionEntity::getPStatus)).toList();
+
+        String[] queryParams = request.getRequestURI().split("/");
+
+        int pages = 1;
+        int limit = 5;
+
+        if(queryParams.length > 3){
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
+        // check if pages parameter is an int
+        try{
+            if(queryParams.length == 3){
+                pages = Integer.parseInt(queryParams[2]);
+                if(pages <= 0)
+                    throw new NumberFormatException();
+            }
+        }catch(NumberFormatException exception){
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+            return;
+        }
+
+        int offset = (pages-1)*limit;
+        int max = offset + limit;
+
+        int rows = promotions.size();
+        int totalOfPages = rows % limit == 0 ? rows / limit : rows / limit + 1;
+        if (pages == totalOfPages){
+            max = Math.min(max,rows);
+        }
+        promotions = promotions.subList(offset,max);
+
+        request.setAttribute("totalOfPages", totalOfPages);
+        request.setAttribute("currentPage", pages);
+        request.setAttribute("promotions", promotions);
         // redirect to the promo page
         request.getRequestDispatcher("/views/Manager/promotion.jsp").forward(request, response);
     }

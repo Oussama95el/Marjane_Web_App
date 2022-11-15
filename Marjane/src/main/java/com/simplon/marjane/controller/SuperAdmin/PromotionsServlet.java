@@ -1,4 +1,4 @@
-package com.simplon.marjane.controller.RespRay;
+package com.simplon.marjane.controller.SuperAdmin;
 
 import com.simplon.marjane.Dao.PromotionDao;
 import com.simplon.marjane.entity.PromotionEntity;
@@ -7,18 +7,17 @@ import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
-import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@WebServlet(name = "AllPromoServlet", value = "/resp-ray/all-promotions/*")
-public class AllPromoServlet extends HttpServlet {
+@WebServlet(name = "PromotionsServlet", value = "/super-admin/promotions/*")
+public class PromotionsServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PromotionDao promotionDao = new PromotionDao();
-        // stream all promotions and show pending promotions first
-        List<PromotionEntity> promotions = promotionDao.getAllPromotions().stream().sorted((p1,p2) -> p1.getPStatus().compareTo(p2.getPStatus())).collect(Collectors.toList());
-
+        // stream through promotions and to order them by status
+        List<PromotionEntity> promotions = promotionDao.getAllPromotions().stream().sorted((p1, p2) -> p1.getPStatus().compareTo(p2.getPStatus())).toList();
+        // get the number of page from url path
         String[] queryParams = request.getRequestURI().split("/");
 
         int pages = 1;
@@ -54,7 +53,7 @@ public class AllPromoServlet extends HttpServlet {
         request.setAttribute("totalOfPages", totalOfPages);
         request.setAttribute("currentPage", pages);
         request.setAttribute("promotions", promotions);
-        request.getRequestDispatcher("/components/RespRayon/PromotionsList.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/SuperAdmin/promotions.jsp").forward(request, response);
     }
 
     @Override

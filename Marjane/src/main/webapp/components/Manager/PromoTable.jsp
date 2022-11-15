@@ -105,6 +105,9 @@
             </c:forEach>
             </tbody>
         </table>
+        <div class="w-full flex items-center justify-center mb-3">
+            <jsp:include page="/components/Manager/Pagination.jsp" flush="true"/>
+        </div>
     </div>
 </div>
 

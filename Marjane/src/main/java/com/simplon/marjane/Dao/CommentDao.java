@@ -1,6 +1,7 @@
 package com.simplon.marjane.Dao;
 
 import com.simplon.marjane.entity.CommentEntity;
+import com.simplon.marjane.entity.PromotionEntity;
 
 import java.util.List;
 
@@ -43,5 +44,19 @@ public class CommentDao extends AbstractHibernateDao<CommentEntity> {
         deleteById(id);
     }
 
+    // get comment by promotion id
+    public List<CommentEntity> getCommentByPromotionId(PromotionEntity promotion) {
+        return jpaService.runInTransaction(entityManager -> {
+            return entityManager.createQuery("select c from CommentEntity c where c.cPromotion = :promotion ", CommentEntity.class)
+                    .setParameter("promotion", promotion)
+                    .getResultList();
+        });
+    }
 
+
+    public static void main(String[] args) {
+        CommentDao commentDao = new CommentDao();
+        PromotionEntity promotionEntity = new PromotionDao().getPromotionById(12);
+        System.out.println(commentDao.getCommentByPromotionId(promotionEntity).toString());
+    }
 }

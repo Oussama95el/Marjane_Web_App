@@ -34,10 +34,7 @@
                 </a>
             </div>
         </nav>
-
         <jsp:include page="../../components/Manager/PromoTable.jsp" flush="true"/>
-
-
     </main>
 </div>
 

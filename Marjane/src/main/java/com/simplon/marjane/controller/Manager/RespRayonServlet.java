@@ -41,12 +41,16 @@ public class RespRayonServlet extends HttpServlet {
 
         if (respRayonDao.createRespRayon(respRayon)) {
             //Send email to the resp rayon using class SimpleEmail
-            SimpleEmail.sendSimpleEmail("oussamaelbechari@gmail.com",
-                    "Welcome to Marjane",
-                    "Welcome to Marjane, your account has been created successfully"
-            );
+            try {
+                SimpleEmail.sendSimpleEmail("oussamaelbechari@gmail.com",
+                        "Welcome to Marjane",
+                        "Welcome to Marjane, your account has been created successfully"
+                );
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             // redirect to the resp rayon page
-            request.getRequestDispatcher("/RespRayonListServlet").forward(request, response);
+            response.sendRedirect("/RespRayonListServlet");
         } else {
             // redirect to the 404 page
             request.setAttribute("type", "error");

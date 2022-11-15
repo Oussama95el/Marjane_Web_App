@@ -13,6 +13,7 @@
         <class>com.simplon.marjane.entity.AdminEntity</class>
         <class>com.simplon.marjane.entity.BranchEntity</class>
         <class>com.simplon.marjane.entity.CategoryEntity</class>
+        <class>com.simplon.marjane.entity.CommentEntity</class>
         <class>com.simplon.marjane.entity.CityEntity</class>
         <class>com.simplon.marjane.entity.PromotionEntity</class>
         <class>com.simplon.marjane.entity.RespRayonEntity</class>

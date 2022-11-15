@@ -12,7 +12,7 @@
 </head>
 <body>
 <div class="h-screen w-full flex overflow-hidden select-none">
-    <jsp:include page="../../components/Manager/SideNav.jsp" flush="true"/>
+    <jsp:include page="../../components/SuperAdmin/SideNav.jsp" flush="true"/>
     <main class="my-1 pt-2 pb-2 px-10 flex-1 bg-gray-200 dark:bg-black rounded-l-lg
             transition duration-500 ease-in-out overflow-y-auto">
         <nav class="flex items-center justify-evenly bg-white text-center">
