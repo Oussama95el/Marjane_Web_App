@@ -184,7 +184,7 @@
                                         </div>
                                         <div class="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
                                             <div class="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
-                                                <img class="rounded-full" src="/assets/images/manager.jpg" alt="Responsable rayon svg image">
+                                                <img  class="w-13 h-12 rounded-full" src="/assets/images/manager.jpg" alt="Responsable rayon svg image">
                                             </div>
                                         </div>
                                     </div>

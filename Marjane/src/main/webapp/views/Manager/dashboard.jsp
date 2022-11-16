@@ -19,12 +19,14 @@
 <% int acceptedPromotions = (int) promotions.stream().filter(promotionEntity -> promotionEntity.getPStatus().equals("ACCEPTED")).count(); %>
 <%-- stream promotions and get size of promotions with status REJECTED --%>
 <% int rejectedPromotions = (int) promotions.stream().filter(promotionEntity -> promotionEntity.getPStatus().equals("REJECTED")).count(); %>
+<%-- --%>
+<% String comment = ""; %>
 <html>
 <head>
     <title>Title</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="relative">
 <div class="h-screen w-full flex overflow-hidden select-none">
     <jsp:include page="../../components/Manager/SideNav.jsp" flush="true"/>
     <main class="my-1 pt-2 pb-2 px-10 flex-1 bg-gray-200 dark:bg-black rounded-l-lg
@@ -43,7 +45,7 @@
                                             <span class="text-base font-normal text-gray-500">This is a list of latest Promotions</span>
                                         </div>
                                         <div class="flex-shrink-0">
-                                            <a href="#" class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View all</a>
+                                            <a href="/PromoServlet" class="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg p-2">View all</a>
                                         </div>
                                     </div>
                                     <div class="flex flex-col mt-8">
@@ -93,6 +95,9 @@
                                                             </td>
                                                             <td class="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                                                                 <span class="font-semibold status mr-3"><c:out value="${promotion.getPStatus()}"/></span>
+                                                                <span class="hidden comment font-semibold status mr-3">
+<%--                                                                    <%= comment = request.getAttribute("comments").stream()%>--%>
+                                                                </span>
                                                             </td>
                                                         </tr>
                                                         </c:forEach>
@@ -190,6 +195,7 @@
             <script src="https://demo.themesberg.com/windster/app.bundle.js"></script>
         </div>
     </main>
+    <jsp:include page="../../components/loader.jsp" flush="true"/>
 </div>
 <script>
     // change status bg color based on status

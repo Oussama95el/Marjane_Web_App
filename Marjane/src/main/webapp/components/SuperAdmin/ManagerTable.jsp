@@ -76,7 +76,7 @@
             <c:out value="${manager.getBranches().getbCity().getcNom()}"/>
           </td>
             <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
-                <a href="/manager/delete?id=<c:out value="${manager.getaId()}"/>"
+                <a href="/super-admin/delete?id=<c:out value="${manager.getaId()}"/>"
                  class="bg-red-600 px-2 py-2 rounded text-white font-extrabold rouded text-sm">
                 Delete
                 </a>

@@ -1,5 +1,6 @@
 package com.simplon.marjane.controller.Manager;
 
+import com.simplon.marjane.Dao.CommentDao;
 import com.simplon.marjane.Dao.PromotionDao;
 import com.simplon.marjane.Dao.RespRayonDao;
 import jakarta.servlet.*;
@@ -15,6 +16,8 @@ public class DashboardServlet extends HttpServlet {
         // creat objects from promotions and resp rayon dao and set them to the request as statistics
         PromotionDao promotionDao = new PromotionDao();
         RespRayonDao respRayonDao = new RespRayonDao();
+        CommentDao commentDao = new CommentDao();
+        request.setAttribute("comments", commentDao.getAllComments());
         request.setAttribute("respRayons", respRayonDao.getAllRespRayons());
         request.setAttribute("promotions", promotionDao.getAllPromotions().stream().sorted((p1, p2) -> p1.getPStatus().compareTo(p2.getPStatus())).toList());
         request.getRequestDispatcher("/views/Manager/dashboard.jsp").forward(request, response);
